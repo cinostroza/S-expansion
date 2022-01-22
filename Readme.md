@@ -1,3 +1,5 @@
 ## S-Expansion Python Library
 This is a python migration of the S-Expansion Java Library developed by Felip Nadal, Nelson Merino, Carlos Inostroza
-and Igor Kondrashuk
+and Igor Kondrashuk.
+
+Requires Python 3.8 or later.
