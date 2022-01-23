@@ -1,1 +1,14 @@
-# This a Python migration of the S-Expansion Java Library
+from Semigroup import Semigroup
+
+data = {
+    0: [1, 0, 2],
+    1: [0, 2, 1],
+    2: [2, 1, 0]
+}
+
+sg = Semigroup(_id=1, order=3, data=data)
+
+print(sg.data)
+print(sg.is_associative())
+
+
