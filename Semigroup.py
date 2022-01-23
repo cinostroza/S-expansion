@@ -1,5 +1,6 @@
 # This is a Python class to represent a Semigroup.
 import pandas as pd
+import math
 
 
 class Semigroup:
@@ -7,10 +8,11 @@ class Semigroup:
     data must be a dictionary or 2D json representing the multiplication table of the dictionary
     id is the unique identificator of the semigroup, order is the order"""
 
-    def __init__(self, _id, order, data):
+    def __init__(self, _id, data):
         self.id = _id
         self.data = pd.DataFrame.from_dict(data=data)
-        self.order = order
+        self.order = 0
+        self.get_order()
 
     # a + (b + c) = (a + b) +c
 
@@ -26,4 +28,4 @@ class Semigroup:
         return True
 
     def get_order(self):
-        pass
+        self.order = int(math.sqrt(self.data.size))

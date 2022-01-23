@@ -6,9 +6,9 @@ data = {
     2: [2, 1, 0]
 }
 
-sg = Semigroup(_id=1, order=3, data=data)
+sg = Semigroup(_id=1, data=data)
 
 print(sg.data)
 print(sg.is_associative())
-
+print(sg.order)
 
