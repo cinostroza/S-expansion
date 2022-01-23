@@ -19,6 +19,9 @@ class Semigroup:
     def operation(self, a, b):
         return self.data.iloc[a, b]
 
+    def get_order(self):
+        self.order = int(math.sqrt(self.data.size))
+
     def is_associative(self):
         for i in range(0, self.order):
             for j in range(0, self.order):
@@ -27,5 +30,9 @@ class Semigroup:
                         return False
         return True
 
-    def get_order(self):
-        self.order = int(math.sqrt(self.data.size))
+    def is_commutative(self):
+        for i in range(0, self.order):
+            for j in range(0, self.order):
+                if self.operation(i, j) != self.operation(j, i):
+                    return False
+        return True

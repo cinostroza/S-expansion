@@ -10,5 +10,5 @@ sg = Semigroup(_id=1, data=data)
 
 print(sg.data)
 print(sg.is_associative())
-print(sg.order)
+print(sg.is_commutative())
 
