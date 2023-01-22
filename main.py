@@ -1,4 +1,4 @@
-from Semigroup import Semigroup
+from semigroups.semigroup import Semigroup
 
 data = {
     0: [1, 0, 2],
