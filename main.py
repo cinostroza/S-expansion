@@ -1,14 +1,13 @@
-from semigroups.semigroup import Semigroup
+from semigroups.semigroups import Semigroups, Order
+from semigroups.semigroup_operations import is_commutative
 
-data = {
-    0: [1, 0, 2],
-    1: [0, 2, 1],
-    2: [2, 1, 0]
-}
 
-sg = Semigroup(_id=1, data=data)
+def run():
+    order_3 = Semigroups(Order.THREE)
+    for group in order_3.data.values():
+        print(f'semigroup of id: {group.id} Associative?: {is_commutative(group)}')
+    print(order_3.data)
 
-print(sg.data)
-print(sg.is_associative())
-print(sg.is_commutative())
 
+if __name__ == '__main__':
+    run()

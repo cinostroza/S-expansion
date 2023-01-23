@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import enum
+import os
 from dataclasses import dataclass, field
 
-from semigroup import Semigroup
+from . import semigroup as sg
 
-DATA_FILES_LOCATION = "./data/order_"
+DATA_FILES_LOCATION = "./semigroups/data/order_"
 
 
 class UnknownSemigroupOrderException(Exception):
@@ -32,7 +33,7 @@ class Semigroups:
     order: Order
     file_dict: dict = field(default_factory=dict)
     input_file: str = ""
-    data: dict[int: Semigroup] = field(default_factory=dict[int: Semigroup])
+    data: dict[int: sg.Semigroup] = field(default_factory=dict[int: sg.Semigroup])
 
     def __init__(self, order: Order):
         self.order = order
@@ -48,12 +49,12 @@ class Semigroups:
         self.input_file = self.file_dict[order]
         self.data = self.load_data()
 
-    def load_data(self) -> dict[int: Semigroup]:
+    def load_data(self) -> dict[int: sg.Semigroup]:
         data = {}
         if self.order not in self.file_dict:
             print('order_exception')
             raise UnknownSemigroupOrderException
-
+        print(os.getcwd())
         with open(self.input_file, 'r') as f:
             lines = f.read().splitlines()
         order = int(lines[0].split(" ")[-1])
@@ -69,13 +70,13 @@ class Semigroups:
                         for j in range(order):
                             semigroup_row.append(int(next(raw_table)))
                         semigroup_table.append(semigroup_row)
-                    s = Semigroup(order=order, id=_id, table=semigroup_table)
+                    s = sg.Semigroup(order=order, id=_id, table=semigroup_table)
                     data[s.id] = s
             except StopIteration:
                 break
         return data
 
-    def get_semigroup(self, _id: int) -> Semigroup:
+    def get_semigroup(self, _id: int) -> sg.Semigroup:
         s = self.data.get(_id, None)
         if not s:
             raise UnknownSemigroupOrderException
