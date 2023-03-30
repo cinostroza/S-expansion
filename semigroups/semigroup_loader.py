@@ -29,7 +29,7 @@ class Order(enum.Enum):
 
 
 @dataclass
-class Semigroups:
+class SemigroupLoader:
     order: Order
     file_dict: dict = field(default_factory=dict)
     input_file: str = ""

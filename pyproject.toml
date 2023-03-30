@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "s-expansion"
+version = "0.1.0"
+description = "Python library to perform s-expansions of abelian semigroups"
+authors = ["Carlos Inostroza"]
+license = "Creative Commons"
+readme = "README.md"
+packages = [{include = "s_expansion"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
